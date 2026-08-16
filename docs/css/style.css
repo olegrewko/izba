@@ -1,5 +1,10 @@
 
-/*  */
+.maroon {
+  color: maroon;
+}
+.crimson {
+  color: crimson;
+}
 img {
   max-width: 100%;
   border-style: none;
@@ -15,6 +20,10 @@ img {
 
 }
 /* advantages */
+.ml-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .ml-10 {
    margin-left: 10px;
    margin-right: 10px;
@@ -49,6 +58,27 @@ img {
   font-family: "Jost";
   font-weight: 500;
   src: url("../fonts/Jost-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+/* ===== RUBIK REGULAR (400) ===== */
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rubik-Regular'),
+    url('../fonts/Rubik-Regular.woff2') format('woff2'),
+    url('../fonts/Rubik-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+/* ===== RUBIK MEDIUM (500) ===== */
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Rubik-Medium'),
+    url('../fonts/Rubik-Medium.woff2') format('woff2'),
+    url('../fonts/Rubik-Medium.woff') format('woff');
   font-display: swap;
 }
 @font-face {
@@ -196,7 +226,13 @@ p {
   margin: 5px 0;
   color: #373A39;
 }
-
+.df {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
 /* ========== КОМПОНЕНТЫ ========== */
 .container1400 {
   max-width: 1400px;
@@ -263,16 +299,23 @@ p {
 }
 
 .bt-2 {
-  border-top: 1px solid var(--contrast-color);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border-top: 1px solid var(--bauhaus-gray);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bb-2 {
+  border-bottom: 1px solid var(--bauhaus-gray);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .bt-6 {
   display: block;
   /* ← важно: блок на всю ширину */
-  border-top: 6px solid var(--contrast-color);
+  border-top: 2px solid var(--contrast-color);
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -339,7 +382,7 @@ p {
   top: 0;
   box-shadow: 0 0 20px rgba(0, 0.5, 0.5, 0.5);
   z-index: 1;
-  background: var(--gray-500);
+  background: var(--bauhaus-black);
 
 }
 
@@ -347,7 +390,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--gray-500);
+  background: var(--bauhaus-black);
   z-index: 10;
   width: 100%;
     /* ← ДОБАВИТЬ */
@@ -384,7 +427,7 @@ p {
   font-weight: bold;
   font-size: 14px;
   line-height: 120%;
-  color: var(--black);
+  color: var(--bauhaus-white);
   cursor: pointer;
   transition: all .4s;
 }
@@ -413,7 +456,7 @@ p {
   width: 100%;
   min-height: 260px;
     /* ← минимальная высота */
-    max-height: 450px;
+    max-height: 650px;
     /* ← максимальная высота */
   overflow: hidden;
   background: #000;
@@ -436,7 +479,7 @@ p {
 @media (max-width: 768px) {
   .slider-blog__item {
     aspect-ratio: 4 / 3;
-    max-height: 300px;
+    max-height: 400px;
   }
 
   .slider-blog__img {
@@ -586,7 +629,7 @@ p {
 }
 
 .about__cell {
-  max-width: 900px;
+  max-width: 700px;
   width: 100%;
   margin: 0px;
   padding: 0;
@@ -803,7 +846,7 @@ p {
   font-family: 'Rubik';
   font-weight: 700;
   line-height: 120%;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--bauhaus-black);
 }
 
@@ -1189,7 +1232,7 @@ p {
     left: 0;
     right: 30%;
     top: 102.36px;
-    background: rgba(96, 212, 212, 0.5);
+    background: var(--gray-700);
 
     display: flex;
     flex-direction: column;
@@ -1824,40 +1867,59 @@ p {
 
 .card-info__btn--tocart {
   margin-bottom: 5px;
-  width: 100%;
+  width: 700px;
   height: 40px;
   font-weight: 600;
-  font-size: 12px;
-  width: 100%;
-  border: 2px solid black;
-  border-radius: 2px;
-  margin-top: 2px;
-  background-color: transparent;
-  color: black;
-  transition: color 0.3s, background-color 0.3s;
+  font-size: 14px;
 
+  border: 0px solid var(--gray-700);
+  border-radius: 4px;
+  margin-top: 5px;
+  background-color: var(--color-maroon);
+  color: var(--bauhaus-white);
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
   &:hover {
     color: white;
     background-color: black;
     transition: color 0.3s, background-color 0.3s;
+    cursor: pointer;
   }
 }
 
 .card-info__btn--towishlist {
-  color: black;
+  color: var(--gray-900);
   background-color: white;
-  border: 2px solid #000;
-  width: 300px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-
+  border: 2px solid var(--gray-700);
+  border-radius: 4px;
+  max-width: 470px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
   &:hover {
     color: white;
     background-color: black;
     transition: color 0.3s, background-color 0.3s;
   }
 }
+.card-info__btn--towishlist--reverse {
+  color: var(--bauhaus-white);
+  background-color: black;
+  border: 2px solid var(--gray-700);
+  border-radius: 4px;
+  max-width: 470px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
 
+  &:hover {
+    color: black;
+    background-color: white;
+    transition: color 0.3s, background-color 0.3s;
+  }
+}
 
 
 .stepper__input {
@@ -2180,8 +2242,8 @@ p {
 /* ===== ВТОРАЯ НАДПИСЬ (как кнопка) ===== */
 .depo-title-contrast {
   font-family: 'Rubik', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 14px;
   text-transform: uppercase;
   margin-left: 2px;
   /* ← убрать отступ, чтобы не было разрыва */
@@ -2191,6 +2253,27 @@ p {
   /* ← важно для фона */
   background: var(--contrast-color);
   color: var(--bauhaus-white, #ffffff);
+  padding: 12px 24px;
+  /* ← внутренние отступы как у кнопки */
+  border-radius: 4px;
+  /* ← скругление */
+  border: none;
+  transition: all 0.3s ease;
+  margin: 0px;
+}
+.depo-title-contrast--reverse {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  /* text-transform: uppercase; */
+  margin-left: 2px;
+  /* ← убрать отступ, чтобы не было разрыва */
+
+  /* ===== СТИЛИ КАК У КНОПКИ ===== */
+  display: inline-block;
+  /* ← важно для фона */
+  background: var(--bauhaus-white);
+  color: var(--gray-900);
   padding: 12px 24px;
   /* ← внутренние отступы как у кнопки */
   border-radius: 4px;
