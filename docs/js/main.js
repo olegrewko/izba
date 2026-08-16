@@ -1,114 +1,254 @@
-$(function () {
-  $(".menu a, .totop").on("click", function (event) {
-    event.preventDefault();
-    var id = $(this).attr('href');
-    var top = $(id).offset().top;
-    $('body,html').animate({
-      scrollTop: top
-    }, 1500);
-  });
 
-  // ===== SLICK SLIDER =====
-  $('.slider-blog__inner').slick({
-    arrows: false,
-    dots: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    fade: true,
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        arrows: false
-      }
-    }]
-  });
 
-  $('.menu__btn, .menu a').on('click', function () {
-    $('.menu__list').toggleClass('menu__list--active');
-  });
+// ==================== ВКЛАДКИ (TABS) ====================
+window.openCity = function (evt, cityName) {
+  var i, tabcontent, tablinks;
 
-  $(".radio input").on("click", function (e) {
-    console.clear();
-    console.log(this.checked);
-    e.preventDefault();
-    setTimeout(() => $(this).prop("checked", !this.checked).trigger("change"));
-  });
-});
-
-// ===== ВЫПАДАЮЩИЕ МЕНЮ =====
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-function myFunctionHeadphones() {
-  document.getElementById("myHeadphones").classList.toggle("show");
-}
-function myFunctionWireless() {
-  document.getElementById("myWireless").classList.toggle("show");
-}
-function myFunctionFind() {
-  document.getElementById("myFind").classList.toggle("show");
-}
-
-window.onclick = function (event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
+  tabcontent = document.getElementsByClassName('tabcontent');
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = 'none';
   }
-}
 
-// ===== СТЕППЕР (ИСПРАВЛЕННЫЙ) =====
-var $stepper = document.querySelector('.stepper');
-if ($stepper) {
-  const $stepperInput = $stepper.querySelector('.stepper__input');
-  const $stepperMinus = $stepper.querySelector('.stepper__btn--minus');
-  const $stepperPlus = $stepper.querySelector('.stepper__btn--plus');
+  tablinks = document.getElementsByClassName('tablinks');
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove('active');
+  }
 
-  if ($stepperInput && $stepperMinus && $stepperPlus) {
-    $stepperInput.addEventListener('keydown', (e) => {
-      console.log(e.currentTarget.value);
-      if (e.currentTarget.value <= 1) {
-        $stepperMinus.classList.add('stepper__btn--disabled');
-        $stepperPlus.classList.remove('stepper__btn--disabled');
-      } else {
-        $stepperMinus.classList.remove('stepper__btn--disabled');
-      }
-      if (e.currentTarget.value > 99998) {
-        $stepperMinus.classList.remove('stepper__btn--disabled');
-        $stepperPlus.classList.add('stepper__btn--disabled');
-      } else {
-        $stepperPlus.classList.remove('stepper__btn--disabled');
-      }
-    });
+  var targetTab = document.getElementById(cityName);
+  if (targetTab) {
+    targetTab.style.display = 'block';
+  }
+  if (evt && evt.currentTarget) {
+    evt.currentTarget.classList.add('active');
+  }
+};
 
-    $stepperPlus.addEventListener('click', (e) => {
-      let currentValue = parseInt($stepperInput.value);
-      currentValue++;
-      $stepperInput.value = currentValue;
-      $stepperMinus.classList.remove('stepper__btn--disabled');
-      if ($stepperInput.value > 99998) {
-        $stepperInput.value = 99999;
-        $stepperPlus.classList.add('stepper__btn--disabled');
-      } else {
-        $stepperPlus.classList.remove('stepper__btn--disabled');
+// ============================================================
+// ОСНОВНОЙ КОД (выполняется после загрузки DOM)
+// ============================================================
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ==================== ВКЛАДКИ: ОТКРЫТЬ ПО УМОЛЧАНИЮ ====================
+  var defaultTab = document.getElementById('defaultOpen');
+  if (defaultTab) {
+    defaultTab.click();
+  }
+
+  // ==================== ПЛАВНАЯ ПРОКРУТКА ====================
+  document.querySelectorAll('.menu a, .totop').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = this.getAttribute('href');
+      var target = document.querySelector(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  });
 
-    $stepperMinus.addEventListener('click', (e) => {
-      let currentValue = parseInt($stepperInput.value);
-      currentValue--;
-      $stepperInput.value = currentValue;
-      $stepperPlus.classList.remove('stepper__btn--disabled');
-      if ($stepperInput.value <= 1) {
-        $stepperInput.value = 1;
-        $stepperMinus.classList.add('stepper__btn--disabled');
-      } else {
-        $stepperMinus.classList.remove('stepper__btn--disabled');
-      }
+  // ==================== Slick SLIDER ====================
+  var slickSlider = document.querySelector('.slider-blog__inner');
+  if (slickSlider && typeof $ !== 'undefined' && $.fn.slick) {
+    $(slickSlider).slick({
+      arrows: false,
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      fade: true,
+      adaptiveHeight: false,
+      responsive: [{
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          adaptiveHeight: false
+        }
+      }]
     });
   }
-}
+
+  // ==================== МОБИЛЬНОЕ МЕНЮ ====================
+  var menuBtn = document.querySelector('.menu__btn');
+  var menuList = document.querySelector('.menu__list');
+
+  if (menuBtn && menuList) {
+    menuBtn.addEventListener('click', function () {
+      menuList.classList.toggle('menu__list--active');
+    });
+
+    document.querySelectorAll('.menu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          menuList.classList.remove('menu__list--active');
+        }
+      });
+    });
+  }
+
+  // ==================== КНОПКА "НАВЕРХ" ====================
+  var toTopBtn = document.getElementById('toTop');
+  if (toTopBtn) {
+    window.addEventListener('scroll', function () {
+      toTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    toTopBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ==================== EMAILJS: ИНИЦИАЛИЗАЦИЯ (только если есть формы) ====================
+  var subscribeForm = document.getElementById('subscribeForm');
+  var contactForm = document.querySelector('.contacts__form');
+
+  if (subscribeForm || contactForm) {
+    emailjs.init('QtQs0hpE6RP4L7imF');
+  }
+
+  // ==================== EMAILJS: ПОДПИСКА ====================
+  if (subscribeForm) {
+    subscribeForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var emailInput = this.querySelector('input[type="email"]');
+      var email = emailInput ? emailInput.value : '';
+
+      if (!email) {
+        alert('Пожалуйста, введите email адрес.');
+        return;
+      }
+
+      var submitBtn = this.querySelector('.subscribe-form-btn');
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Отправка...';
+      submitBtn.disabled = true;
+
+      emailjs.send('service_zd0rflv', 'template_ojddyqj', {
+        user_email: email,
+        subscribe_time: new Date().toLocaleString('ru-RU', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        }),
+        title: 'Новая подписка на сайте'
+      })
+        .then(function () {
+          alert('Спасибо за подписку! На указанный email ' + email + ' отправлено подтверждение.');
+          emailInput.value = '';
+        })
+        .catch(function () {
+          alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
+        })
+        .finally(function () {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
+    });
+  }
+
+  // ==================== EMAILJS: КОНТАКТЫ ====================
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var submitBtn = this.querySelector('.contacts__submit');
+      var originalText = submitBtn.value;
+
+      var nameInput = this.querySelector('input[name="firstname"]');
+      var emailInput = this.querySelector('input[name="firstemail"]');
+      var messageInput = this.querySelector('textarea[name="subject"]');
+
+      if (!nameInput || !emailInput || !messageInput) {
+        alert('Ошибка: не все поля формы найдены.');
+        return;
+      }
+
+      var templateParams = {
+        name: nameInput.value || '',
+        email: emailInput.value || '',
+        message: messageInput.value || '',
+        time: new Date().toLocaleString('ru-RU', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      };
+
+      if (!templateParams.name || !templateParams.email || !templateParams.message) {
+        alert('Пожалуйста, заполните все поля формы.');
+        return;
+      }
+
+      submitBtn.value = 'Отправка...';
+      submitBtn.disabled = true;
+
+      emailjs.send('service_zd0rflv', 'template_kvbjjar', templateParams)
+        .then(function () {
+          alert('Спасибо! Ваше сообщение отправлено.');
+          contactForm.reset();
+        })
+        .catch(function () {
+          alert('Ошибка отправки. Позвоните нам: 8-999-852-58-21');
+        })
+        .finally(function () {
+          submitBtn.value = originalText;
+          submitBtn.disabled = false;
+        });
+    });
+  }
+
+  // ==================== АВТОЗАМЕНА НА WEBP ====================
+  function supportsWebP() {
+    var canvas = document.createElement('canvas');
+    return canvas.toDataURL('image/webp').indexOf('image/webp') === 0;
+  }
+
+  if (supportsWebP()) {
+    document.querySelectorAll('img[src$=".jpg"], img[src$=".jpeg"], img[src$=".png"]').forEach(function (img) {
+      var webpSrc = img.src.replace(/\.(jpg|jpeg|png)$/, '.webp');
+      fetch(webpSrc, { method: 'HEAD' })
+        .then(function (res) {
+          if (res.ok) img.src = webpSrc;
+        })
+        .catch(function () { });
+    });
+  }
+
+}); // КОНЕЦ DOMContentLoadeds
+
+// fotorama
+// nav: 'dots'(точки вместо миниатюр)
+
+// thumbwidth: 64
+
+// thumbheight: 64
+
+// allowfullscreen: false
+
+// height: 'auto'
+// ===== FOTORAMA =====
+// $('.fotorama').fotorama({
+//   nav: 'thumbs',
+//   thumbwidth: 120,
+//   thumbheight: 120,
+//   allowfullscreen: false,
+//   width: '100%',          // ← ширина 100% от контейнера
+//   height: 'auto',         // ← высота автоматически
+//   maxwidth: '100%',       // ← максимальная ширина
+//   maxheight: '100%'       // ← максимальная высота
+// });
+// ===== FOTORAMA =====
+// $('.fotorama').fotorama({
+//   nav: 'thumbs',
+//   thumbwidth: 100,
+//   thumbheight: 100,
+//   allowfullscreen: false,
+//   width: '100%',          // ← 100% от контейнера
+//   height: 'auto',         // ← авто-высота (сохраняет пропорции)
+//   maxwidth: '120%',
+//   ratio: 1 / 1             // ← пропорции 1:1 (квадрат)
+// });
