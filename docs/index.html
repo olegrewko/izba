@@ -108,7 +108,49 @@
 
       <div class="container1400 df">
         <h3 class="depo-title-contrast--reverse">Проект Р-245 | для семьи из 4-6 человек</h3>
-        <button class="card-info__btn--tocart">Актуальная смета</button>
+        <!-- <button class="card-info__btn--tocart">Актуальная смета</button> -->
+        <!-- Кнопка, которая открывает окно -->
+        <button class="card-info__btn--tocart" id="openModalBtn">Актуальная смета</button>
+
+        <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+        <div class="modal-overlay" id="modalOverlay">
+          <div class="modal-window">
+            <!-- Заголовок -->
+            <div class="modal-header">
+              <div class="df">
+              <h3>Актуальная смета</h3>
+              <button class="modal-close ml-10" id="closeModalBtn">&times;</button>
+              </div>
+              <p>Пришлем вам актуальную смету любым удобным для вас способом</p>
+
+            </div>
+            <!-- Содержимое -->
+            <div class="modal-body">
+              <input class="subscribe-form-input" type="email" required placeholder="Как вас зовут?">
+              <p>Куда отправить коммерческое предложение?</p>
+              <div class="df">
+                <p class="depo-title-contrast" style="color: #fff;">
+                  Telegram
+                </p>
+                <p class="depo-title-contrast" style="color: #fff;">
+                  Max
+                </p>
+              </div>
+              <input class="subscribe-form-input" type="email" required placeholder="Логин Telegram: @username">
+              <p>Контактный телефон</p>
+              <input class="subscribe-form-input" type="email" required placeholder="+7 (999) 999-99-99">
+              <span style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="agree" required />
+                <label for="agree">Я даю согласие на обработку персональных данных в соответствие с <a href="/privacy-policy" target="_blank" class="privacy-link">политикой конфиденциальности</a></label>
+              </span>
+              <button class="card-info__btn--tocart" id="pls">Получить смету</button>
+            </div>
+            <!-- Футер (опционально) -->
+            <div class="modal-footer">
+              <button class="modal-footer-btn" id="closeModalFooterBtn">Закрыть</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="slider-blog">
         <div class="slider-blog__inner">
@@ -1013,6 +1055,50 @@
             // Меняем картинку
 
         });
+      });
+    });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const openBtn = document.getElementById('openModalBtn');
+      const overlay = document.getElementById('modalOverlay');
+      const closeBtn = document.getElementById('closeModalBtn');
+      const closeFooterBtn = document.getElementById('closeModalFooterBtn');
+
+      // Открыть окно
+      openBtn.addEventListener('click', function () {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // блокируем скролл страницы
+      });
+
+      // Закрыть по крестику
+      closeBtn.addEventListener('click', function () {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      // Закрыть по кнопке в футере
+      if (closeFooterBtn) {
+        closeFooterBtn.addEventListener('click', function () {
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      // Закрыть по клику на затемнение (оверлей)
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Закрыть по клавише ESC
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
       });
     });
 </script>

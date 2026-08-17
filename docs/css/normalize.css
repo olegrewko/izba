@@ -85,7 +85,37 @@ textarea {
   line-height: 1.15;
   margin: 0;
 }
+.privacy-link {
 
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.privacy-link:hover {
+
+  text-decoration: none;
+}
+.agree-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.agree-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #e6ae05;
+  /* цвет чекбокса */
+  cursor: pointer;
+}
+
+.agree-row label {
+  cursor: pointer;
+  margin: 0;
+}
 button,
 input {
   overflow: visible;
