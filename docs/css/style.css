@@ -422,8 +422,13 @@ p {
   padding: 0px 10px;
 }
 .grey {
-  color: var(--bauhaus-gray);
-  font-weight: normal;
+  display: block;
+    padding: 10px 0;
+    font-family: 'Jost';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--bauhaus-gray);
 }
 .dropbtn {
   display: block;
