@@ -529,11 +529,86 @@
         <h3 class=" depo-title-contrast--reverse">Ответы на вопросы </h3>
       </div>
       <div class="container1400">
-      <div class="container1400 depo-title-contrast-bordered df">
-        <h4 class=" ml-10">Фундамент</h4>
-        <img class="ml-10" src="./img/plus.png" alt="./img/plus.png">
 
-      </div>
+        <!-- ===== ВЫПАДАЮЩИЙ СПИСОК ===== -->
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Как я могу следить за этапами стройки?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Что, если сорвутся сроки сдачи?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Цена в договоре фиксированная?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Как убедиться в качестве скрытых работ?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Даёте ли вы гарантию на дом?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header df">
+            <h4 class="ml-10">Кто вывозит строительный мусор?</h4>
+            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+          </div>
+          <div class="accordion-content">
+            <p class="ml-10">
+              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+              персональный
+              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -902,7 +977,35 @@
 
 <a href="#" id="toTop"></a>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.accordion-header');
 
+      headers.forEach(function (header) {
+        header.addEventListener('click', function () {
+          const item = this.closest('.accordion-item');
+          const content = item.querySelector('.accordion-content');
+          const icon = item.querySelector('.accordion-icon');
+
+          // Закрываем все остальные (если нужно, чтобы открывался только один)
+          // document.querySelectorAll('.accordion-content').forEach(function(el) {
+          //   if (el !== content) {
+          //     el.classList.remove('open');
+          //     el.closest('.accordion-item').querySelector('.accordion-icon').classList.remove('rotated');
+          //   }
+          // });
+
+          // Переключаем текущий
+
+          content.classList.toggle('open');
+          icon.classList.toggle('rotated');
+
+            // Меняем картинку
+
+        });
+      });
+    });
+</script>
 </body>
 
 </html>

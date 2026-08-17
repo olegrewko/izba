@@ -233,6 +233,86 @@ p {
   flex-wrap: wrap;
   padding: 5px;
 }
+/* ===== ОБЩИЙ КОНТЕЙНЕР ===== */
+.df {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+/* ===== АККОРДЕОН (выпадающий список) ===== */
+.accordion-item {
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== ЗАГОЛОВОК (кликабельный) ===== */
+.accordion-header {
+  cursor: pointer;
+  user-select: none;
+  padding: 15px 10px;
+  background: #f8f9fa;
+  transition: background 0.3s ease;
+  gap: 10px;
+}
+
+.accordion-header:hover {
+  background: #e9ecef;
+}
+
+.accordion-header h4 {
+  margin: 0;
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* ===== ИКОНКА ===== */
+.accordion-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.accordion-icon.rotated {
+  transform: rotate(45deg);
+  /* плюс → минус */
+  /* или transform: rotate(180deg); — если у вас стрелка вниз */
+}
+
+/* ===== ВЫПАДАЮЩИЙ КОНТЕНТ ===== */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.4s ease,
+    opacity 0.4s ease;
+  padding: 0 15px;
+  opacity: 0;
+  background: #fff;
+}
+
+.accordion-content.open {
+  max-height: 300px;
+  /* достаточно для текста */
+  padding: 15px 15px 20px;
+  opacity: 1;
+}
+
+.accordion-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
 /* ========== КОМПОНЕНТЫ ========== */
 .container1400 {
   max-width: 1400px;
@@ -2289,7 +2369,7 @@ p {
   /* ← убрать отступ, чтобы не было разрыва */
 
   /* ===== СТИЛИ КАК У КНОПКИ ===== */
- 
+
   /* ← важно для фона */
   background: transparent;
   color: var(--gray-900);
