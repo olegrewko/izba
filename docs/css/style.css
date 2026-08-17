@@ -233,6 +233,20 @@ p {
   flex-wrap: wrap;
   padding: 5px;
 }
+.dfs {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+.dfc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
 /* ===== ОБЩИЙ КОНТЕЙНЕР ===== */
 
 
@@ -2065,7 +2079,27 @@ p {
 .modal-footer-btn:hover {
   background: #1a252f;
 }
+.modal-footer-btn-hollow {
+  padding: 10px 30px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
 
+.modal-footer-btn-hollow:hover {
+  background: var(--gray-500);
+}
+/* ===== АКТИВНОЕ СОСТОЯНИЕ (выделенный) ===== */
+.modal-footer-btn-hollow.active {
+  background: var(--gray-500);
+  color: #fff !important;
+  border: 0px solid grey;
+  box-shadow: 0 0 10px rgba(230, 174, 5, 0.3);
+}
 /* ===== АНИМАЦИИ ===== */
 @keyframes fadeIn {
   from {
