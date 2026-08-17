@@ -246,7 +246,7 @@ p {
   max-width: 1800px;
     width: 100%;
 
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
 .mt-50 {
@@ -2280,11 +2280,32 @@ p {
   transition: all 0.3s ease;
   margin: 0px;
 }
+.depo-title-contrast-bordered {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+
+  margin-left: 2px;
+  /* ← убрать отступ, чтобы не было разрыва */
+
+  /* ===== СТИЛИ КАК У КНОПКИ ===== */
+ 
+  /* ← важно для фона */
+  background: transparent;
+  color: var(--gray-900);
+  padding: 12px 24px;
+  /* ← внутренние отступы как у кнопки */
+  border-radius: 4px;
+  /* ← скругление */
+  border: 2px solid var(--gray-700);
+  transition: all 0.3s ease;
+  margin: 0px;
+}
 .depo-title-contrast--reverse {
   font-family: 'Rubik', sans-serif;
   font-weight: 600;
   font-size: 14px;
-  /* text-transform: uppercase; */
+
   margin-left: 2px;
   /* ← убрать отступ, чтобы не было разрыва */
 
