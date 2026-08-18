@@ -29,18 +29,22 @@ img {
    margin-right: 10px;
  }
 .card {
-  width: auto;
-  padding: 0;
-  margin: 0;
+  max-width: 430px;
+  width: 100%;
+  min-height: 287px;
+  padding: 5px;
+  margin: 5px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  align-items: center;
   font-family: 'Jost';
   font-weight: 500;
-  font-size: 12px;
-  border: 0px solid var(--gray-color);
-  transition: all .3s;
-  cursor: pointer;
+  font-size: 14px;
+  border: 2px solid var(--gray-color);
+  border-radius: 4px;
+
 }
 
  /* ========== СЛАЙДЕР ========== */
@@ -213,7 +217,7 @@ h3,
 
 
 h4 {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 5px 0;
 }
@@ -231,7 +235,8 @@ p {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 5px;
+  padding: 0px 5px;
+  /* margin: 10px 0; */
 }
 .dfs {
   display: flex;
@@ -248,13 +253,42 @@ p {
   padding: 5px;
 }
 /* ===== ОБЩИЙ КОНТЕЙНЕР ===== */
+/* ===== ОБЁРТКА ДЛЯ КАРТИНОК С АККОРДЕОНАМИ ===== */
+.about__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  /* ← главное: выравнивание по верху */
+  gap: 20px;
+  padding: 20px 10px;
+}
 
+/* ===== КАЖДАЯ КОЛОНКА ===== */
+/* ===== ОБЁРТКА ДЛЯ КАРТИНОК С АККОРДЕОНАМИ ===== */
+.about__cell {
+  max-width: 700px;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 
-/* ===== АККОРДЕОН (выпадающий список) ===== */
+.about__cell img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* ===== АККОРДЕОН ===== */
 .accordion-item {
+  width: 100%;
   border: 1px solid #eaeaea;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -262,12 +296,18 @@ p {
 
 /* ===== ЗАГОЛОВОК (кликабельный) ===== */
 .accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
   user-select: none;
-  padding: 15px 10px;
+  padding: 15px 15px;
   background: #f8f9fa;
   transition: background 0.3s ease;
-  gap: 10px;
+  min-height: 54px;
+  /* ← фиксируем минимальную высоту */
+  width: 100%;
 }
 
 .accordion-header:hover {
@@ -284,16 +324,16 @@ p {
 
 /* ===== ИКОНКА ===== */
 .accordion-icon {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.4s ease;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  /* ← не даём иконке сжиматься */
+  transition: transform 0.4s ease;
+  display: block;
 }
 
 .accordion-icon.rotated {
   transform: rotate(45deg);
-  /* плюс → минус */
-  /* или transform: rotate(180deg); — если у вас стрелка вниз */
 }
 
 /* ===== ВЫПАДАЮЩИЙ КОНТЕНТ ===== */
@@ -310,7 +350,6 @@ p {
 
 .accordion-content.open {
   max-height: 300px;
-  /* достаточно для текста */
   padding: 15px 15px 20px;
   opacity: 1;
 }
@@ -401,19 +440,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.bt-6 {
-  display: block;
-  /* ← важно: блок на всю ширину */
-  border-top: 2px solid var(--contrast-color);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  /* ← на всю ширину */
-  box-sizing: border-box;
-  /* ← чтобы padding не увеличивал ширину */
-}
+
 
 .white {
   color: white;
@@ -536,6 +563,21 @@ p {
 
 
 /* ===== СЛАЙДЕР (с центровкой) ===== */
+.slick-dots li {
+  list-style: none !important;
+  /* убираем маркер */
+}
+
+.slick-dots li::marker {
+  display: none !important;
+  content: '' !important;
+  unicode-bidi: normal !important;
+  font-variant-numeric: normal !important;
+  text-transform: none !important;
+  text-indent: 0 !important;
+  text-align: left !important;
+  text-align-last: auto !important;
+}
  .slider-blog {
   background: #000;
   width: 100%;
@@ -659,12 +701,365 @@ p {
   width: 100%;
 }
 
-.grid-3 {
+/* .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
   max-width: 1400px;
   width: 100%;
+} */
+/* ===== GRID-3 ===== */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 20px 0;
+}
+/* ============================================================
+   МОДАЛЬНОЕ ОКНО НА КАРТОЧКУ 01
+   ============================================================ */
+
+/* ===== ЗАТЕНЕНИЕ ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+/* ===== ОКНО 600×600 ===== */
+.modal-window--600 {
+  width: 600px;
+  max-width: 94%;
+  height: 800px;
+  max-height: 96vh;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  animation: slideDown 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.modal-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.modal-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.modal-header__subtitle {
+  margin: 4px 0 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ===== КРЕСТИК ===== */
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s;
+  padding: 0 8px;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+/* ===== ТЕЛО ОКНА ===== */
+.modal-body {
+  padding: 20px 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== ШАГ ===== */
+.modal-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.modal-step__number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--color-gold, #e6ae05);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.modal-step h5 {
+  margin: 0 0 4px 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.modal-step p {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666;
+}
+
+/* ===== КНОПКА В ТЕЛЕ ===== */
+.modal-body__btn-wrap {
+  padding: 20px 24px;
+  flex-shrink: 0;
+}
+
+/* .modal-body__btn-wrap .card-info__btn--tocart {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-gold, #e6ae05);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-body__btn-wrap .card-info__btn--tocart:hover {
+  background: #c49a00;
+} */
+
+/* ===== ФУТЕР ===== */
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.modal-footer-btn {
+  padding: 10px 32px;
+  background: transparent;
+  color: #555;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.modal-footer-btn:hover {
+  background: #1a1a2e;
+  color: #fff;
+  border-color: #1a1a2e;
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 640px) {
+  .modal-window--600 {
+    width: 96%;
+    height: 96vh;
+    max-height: 96vh;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 16px 18px 12px;
+  }
+
+  .modal-header h3 {
+    font-size: 18px;
+  }
+
+  .modal-body {
+    padding: 16px 18px;
+  }
+
+  .modal-footer {
+    padding: 12px 18px;
+  }
+
+  .modal-step__number {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .modal-step h5 {
+    font-size: 14px;
+  }
+
+  .modal-step p {
+    font-size: 12px;
+  }
+}
+/* ===== КАРТОЧКА ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 28px 24px 24px;
+  background: #ffffff;
+  border: 2px solid var(--gray-300);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  min-height: 280px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  /* border-color: var(--color-gold, #e6ae05); */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  /* transform: translateY(-4px); */
+}
+
+/* ===== ИКОНКА ===== */
+.card__icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.card__title {
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.3px;
+}
+
+/* ===== ПОДЗАГОЛОВОК ===== */
+.card__subtitle {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 8px 0;
+}
+
+/* ===== ТЕКСТ ===== */
+.card__text {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777;
+  margin: 0 0 20px 0;
+  flex: 1;
+  /* чтобы текст занимал всё свободное место */
+}
+
+/* ===== КНОПКА (прижата к низу) ===== */
+.card__btn {
+  width: 100%;
+  padding: 10px 20px;
+  background: transparent;
+  color: #1a1a2e;
+  border: 2px solid var(--gray-500);
+  border-radius: 8px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  /* ПРИЖИМАЕТ КНОПКУ К НИЗУ */
+  letter-spacing: 0.3px;
+}
+
+.card__btn:hover {
+  background: #1a1a2e;
+  color: #ffffff;
+  border-color: #1a1a2e;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 20px 16px;
+  }
 }
 .grid-7 {
   margin-top: 5px;
@@ -715,53 +1110,7 @@ p {
 
 
 /* ========== ABOUT ========== */
-.about__inner {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0;
 
-}
-
-.about__inner+.about__inner {
-  margin-top: 0px;
-}
-
-.about__cell {
-  max-width: 700px;
-  width: 100%;
-  margin: 0px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.about__cell img {
-  width: 100%;
-  border-radius: 8px;
-  display: block;
-}
-
-.text-block {
-  background-color: transparent;
-
-  padding: 0px;
-  border-radius: 8px;
-  text-align: left;
-}
-
-@media (max-width: 768px) {
-  .about__inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 600px;
-      width: 100%;
-    }
-}
 
 
 
@@ -1998,7 +2347,7 @@ p {
 .modal-window {
   width: 500px;
   max-width: 92%;
-  max-height: 700px;
+  max-height: 800px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -2164,14 +2513,15 @@ p {
 }
 
 .card-info__btn--towishlist {
+  display: block;
   color: var(--gray-900);
   background-color: white;
   border: 2px solid var(--gray-700);
   border-radius: 4px;
   max-width: 470px;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 14px;
+  padding: 10px 20px;
   margin: 0px;
   &:hover {
     color: white;
@@ -2186,8 +2536,8 @@ p {
   border-radius: 4px;
   max-width: 470px;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 14px;
+  padding: 10px 20px;
   margin: 0px;
 
   &:hover {

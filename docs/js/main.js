@@ -220,35 +220,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 }); // КОНЕЦ DOMContentLoadeds
 
-// fotorama
-// nav: 'dots'(точки вместо миниатюр)
 
-// thumbwidth: 64
-
-// thumbheight: 64
-
-// allowfullscreen: false
-
-// height: 'auto'
-// ===== FOTORAMA =====
-// $('.fotorama').fotorama({
-//   nav: 'thumbs',
-//   thumbwidth: 120,
-//   thumbheight: 120,
-//   allowfullscreen: false,
-//   width: '100%',          // ← ширина 100% от контейнера
-//   height: 'auto',         // ← высота автоматически
-//   maxwidth: '100%',       // ← максимальная ширина
-//   maxheight: '100%'       // ← максимальная высота
-// });
-// ===== FOTORAMA =====
-// $('.fotorama').fotorama({
-//   nav: 'thumbs',
-//   thumbwidth: 100,
-//   thumbheight: 100,
-//   allowfullscreen: false,
-//   width: '100%',          // ← 100% от контейнера
-//   height: 'auto',         // ← авто-высота (сохраняет пропорции)
-//   maxwidth: '120%',
-//   ratio: 1 / 1             // ← пропорции 1:1 (квадрат)
-// });

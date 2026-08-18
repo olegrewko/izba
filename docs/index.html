@@ -110,47 +110,46 @@
         <h3 class="depo-title-contrast--reverse">Проект Р-245 | для семьи из 4-6 человек</h3>
         <!-- <button class="card-info__btn--tocart">Актуальная смета</button> -->
         <!-- Кнопка, которая открывает окно -->
-        <button class="card-info__btn--tocart" id="openModalBtn">Актуальная смета</button>
+      <!-- Кнопка -->
+      <button class="card-info__btn--tocart modal-open-btn" data-modal="modalOverlay">Актуальная смета</button>
 
-        <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
-        <div class="modal-overlay" id="modalOverlay">
-          <div class="modal-window">
-            <!-- Заголовок -->
-            <div class="modal-header">
-              <div class="df">
+      <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-window">
+          <!-- Заголовок -->
+          <div class="modal-header">
+            <div class="df">
               <h3>Актуальная смета</h3>
-              <button class="modal-close ml-10" id="closeModalBtn">&times;</button>
-              </div>
-              <p>Пришлем вам актуальную смету любым удобным для вас способом</p>
+              <button class="modal-close ml-10" data-close="modalOverlay">&times;</button>
+            </div>
+            <p>Пришлем вам актуальную смету любым удобным для вас способом</p>
+          </div>
 
-            </div>
-            <!-- Содержимое -->
-            <div class="modal-body">
-              <input class="subscribe-form-input" type="email" required placeholder="Как вас зовут?">
-              <p>Куда отправить коммерческое предложение?</p>
+          <!-- Содержимое -->
+          <div class="modal-body">
+            <input class="subscribe-form-input" type="text" required placeholder="Как вас зовут?" />
+            <p>Куда отправить коммерческое предложение?</p>
             <div class="dfs">
-              <p class="modal-footer-btn-hollow" data-tab="telegram" style="color: var(--grey500);">
-                Telegram
-              </p>
-              <p class="modal-footer-btn-hollow" data-tab="max" style="color: var(--grey500);">
-                Max
-              </p>
+              <p class="modal-footer-btn-hollow" data-tab="telegram" style="color: var(--grey500);">Telegram</p>
+              <p class="modal-footer-btn-hollow" data-tab="max" style="color: var(--grey500);">Max</p>
             </div>
-              <input class="subscribe-form-input" type="email" required placeholder="Логин Telegram: @username">
-              <p>Контактный телефон</p>
-              <input class="subscribe-form-input" type="email" required placeholder="+7 (999) 999-99-99">
-              <span style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" id="agree" required />
-                <label for="agree">Я даю согласие на обработку персональных данных в соответствие с <a href="/privacy-policy" target="_blank" class="privacy-link">политикой конфиденциальности</a></label>
-              </span>
-              <button class="card-info__btn--tocart" id="pls">Получить смету</button>
-            </div>
-            <!-- Футер (опционально) -->
-            <div class="modal-footer">
-              <button class="modal-footer-btn" id="closeModalFooterBtn">Закрыть</button>
-            </div>
+            <input class="subscribe-form-input" type="text" required placeholder="Логин Telegram: @username" />
+            <p>Контактный телефон</p>
+            <input class="subscribe-form-input" type="tel" required placeholder="+7 (999) 999-99-99" />
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="agree" required />
+              <label for="agree">Я даю согласие на обработку персональных данных в соответствие с <a href="/privacy-policy"
+                  target="_blank" class="privacy-link">политикой конфиденциальности</a></label>
+            </span>
+            <button class="card-info__btn--tocart" id="pls">Получить смету</button>
+          </div>
+
+          <!-- Футер -->
+          <div class="modal-footer">
+            <button class="modal-footer-btn" data-close="modalOverlay">Закрыть</button>
           </div>
         </div>
+      </div>
       </div>
       <div class="slider-blog">
         <div class="slider-blog__inner">
@@ -314,44 +313,83 @@
 
                  <div class="container1400">
 
-                  <!-- ===== ПЕРВЫЙ БЛОК: ТЕКСТ СЛЕВА, КАРТИНКА СПРАВА ===== -->
-                  <div class="about__inner text-center" style="background-color: var(--color-midnight);">
+
+                   <!-- <div class="about__inner text-center" style="background-color: var(--color-midnight);">
                     <div class="about__cell">
                       <img src="img/slider/im18.png" width="850" height="560" alt="dave"
                         style="width: 100%; height: auto; max-width: 850px; display: block; border-radius: 4px;" loading="lazy" />
+                        <div class="accordion-item">
+                          <div class="accordion-header df">
+                            <h4 class="ml-10">Этаж 1</h4>
+                            <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+                          </div>
+                          <div class="accordion-content">
+                            <p class="ml-10">
+                              Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+                              персональный
+                              менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
+                            </p>
+                          </div>
+                        </div>
                     </div>
                     <div class="about__cell">
+
                       <img src="img/slider/im17.png" width="850" height="560" alt="dave"
                         style="width: 100%; height: auto; max-width: 850px; display: block; border-radius: 4px;" loading="lazy" />
-                      </div>
-                    </div>
 
 
-                  <!-- ===== ВТОРОЙ БЛОК: КАРТИНКА СЛЕВА, ТЕКСТ СПРАВА ===== -->
-                  <!-- <div class="about__inner " style="background-color: var(--color-midnight);">
-                    <div class="about__cell">
-                      <div class="text-block">
-                        <div class="about__c" style="text-align: left;">
-
-                          <p
-                            style="font-size: 12px; line-height: 120%;  color: rgb(165, 164, 164); text-align: left; border-left: 0px solid white; padding: 20px;">
-                            Bowers & Wilkins is a British audio company founded in 1966 by John Bowers with a simple, enduring mission: to create
-                            the perfect loudspeaker that delivers sound as the artist originally intended—a philosophy they call "True Sound" .
-
-                            Known for iconic innovations like the Nautilus speaker and the use of diamond tweeters, it is a brand equally revered
-                            by
-                            both music lovers and top recording studios like Abbey Road, where its speakers are a trusted reference . Today, its
-                            product line extends from high-end home speakers to wireless headphones, all driven by an unwavering "good enough" is
-                            never enough ethos
+                      <div class="accordion-item">
+                        <div class="accordion-header df">
+                          <h4 class="ml-10">Этаж 2</h4>
+                          <img class="ml-10 accordion-icon" src="./img/plus.png" alt="Открыть" />
+                        </div>
+                        <div class="accordion-content">
+                          <p class="ml-10">
+                            Вы получаете фото- и видеоотчёты после каждого этапа. Доступ на объект открыт в любое удобное время. Ваш
+                            персональный
+                            менеджер сопровождает на всех этапах и помогает решать любые вопросы, связанные с этапами строительства.
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
+                    <div class="about__inner text-center" style="padding: 20px 0;">
+
+                      <!-- Левая колонка -->
+              <div class="about__cell">
+                <img src="img/slider/im18.png" alt="План 1 этажа" />
+                <div class="accordion-item">
+                  <div class="accordion-header"
+                    style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <h4 class="ml-10" style="margin: 0; flex: 1; font-size: 16px;">Этаж 1</h4>
+                    <img class="accordion-icon" src="./img/plus.png" alt="Открыть"
+                      style="width: 20px; height: 20px; flex-shrink: 0;" />
+                  </div>
+                  <div class="accordion-content">
+                    <p class="ml-10">Описание первого этажа...</p>
+                  </div>
+                </div>
+              </div>
+
+                    <!-- Правая колонка -->
                     <div class="about__cell">
-                      <img src="img/h560.jpg" width="850" height="560" alt="s"
-                        style="width: 100%; height: auto; max-width: 850px; display: block; border-radius: 4px;" loading="lazy" />
+                      <img src="img/slider/im17.png" alt="План 2 этажа" />
+                      <div class="accordion-item">
+                        <div class="accordion-header"
+                          style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                          <h4 class="ml-10" style="margin: 0; flex: 1; font-size: 16px;">Этаж 2</h4>
+                          <img class="accordion-icon" src="./img/plus.png" alt="Открыть"
+                            style="width: 20px; height: 20px; flex-shrink: 0;" />
+                        </div>
+                        <div class="accordion-content">
+                          <p class="ml-10">Описание второго этажа...</p>
+                        </div>
+                      </div>
                     </div>
-                  </div> -->
+
+                    </div>
+
+
+
                   </div>
 
               </section>
@@ -564,6 +602,228 @@
                   </div>
                 </div>
                 </section>
+      <div class="dummy08"></div>
+      <section class="about  mt-0" id="about">
+        <div class="dummy08"></div>
+        <div class="container1400 bb-2">
+          <h3 class=" depo-title-contrast--reverse">Комфортная оплата на выгодных условиях | Управляйте бюджетом строительства. Формат оплаты под ваши возможности </h3>
+
+        </div>
+
+        <div class="container1400">
+          <div class="grid-3">
+            <!-- Карточка 1 -->
+          <div class="card">
+            <div class="card__icon">🏦</div>
+            <h4 class="card__title">Эскроу-счет</h4>
+            <h5 class="card__subtitle">Специальный банковский счет</h5>
+            <p class="card__text">Используется для безопасности расчётов между сторонами сделки</p>
+            <button class="card__btn modal-open-btn" data-modal="modal1">Подробнее</button>
+
+            <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+            <div class="modal-overlay" id="modal1">
+              <div class="modal-window modal-window--600">
+                <!-- Заголовок -->
+                <div class="modal-header">
+                  <div class="modal-header__inner">
+                    <h3>Эскроу-счет</h3>
+                    <button class="modal-close" data-close="modal1">&times;</button>
+                  </div>
+                  <p class="modal-header__subtitle">Процесс работы с эскроу-счетом</p>
+                </div>
+
+                <!-- Содержимое -->
+                <div class="modal-body">
+                  <div class="modal-step">
+                    <span class="modal-step__number">1</span>
+                    <div>
+                      <h5>Заключение договора подряда</h5>
+                      <p>Вместе с вами мы фиксируем все условия: сроки, стоимость, этапы работ и гарантийные обязательства</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">2</span>
+                    <div>
+                      <h5>Открытие эскроу-счета</h5>
+                      <p>Средства размещаются на специальном банковском счёте, доступ к которому есть только у сторон сделки</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">3</span>
+                    <div>
+                      <h5>Выполнение работ</h5>
+                      <p>Подрядчик выполняет работы поэтапно, а вы контролируете качество и сроки</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">4</span>
+                    <div>
+                      <h5>Подписание акта приёма-передачи</h5>
+                      <p>После завершения работ стороны подписывают акт, и средства перечисляются подрядчику</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Кнопка в теле -->
+                <div class="modal-body__btn-wrap">
+                  <button class="card-info__btn--tocart" id="pls">Получить консультацию</button>
+                </div>
+
+                <!-- Футер -->
+                <div class="modal-footer">
+                  <button class="modal-footer-btn" data-close="modal1">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Карточка 2 -->
+          <div class="card">
+            <div class="card__icon">🏠</div>
+            <h4 class="card__title">Ипотека</h4>
+            <h5 class="card__subtitle">Банки-партнёры предоставляют</h5>
+            <p class="card__text">Ипотеку от 6% на строительство загородного дома</p>
+            <button class="card__btn modal-open-btn" data-modal="modal2">Подробнее</button>
+
+            <!-- ===== МОДАЛЬНОЕ ОКНО modal2 ===== -->
+            <div class="modal-overlay" id="modal2">
+              <div class="modal-window modal-window--600">
+                <!-- Заголовок -->
+                <div class="modal-header">
+                  <div class="modal-header__inner">
+                    <h3>Ипотека</h3>
+                    <button class="modal-close" data-close="modal2">&times;</button>
+                  </div>
+                  <p class="modal-header__subtitle">Условия кредитования</p>
+                </div>
+
+                <!-- Содержимое -->
+                <div class="modal-body">
+                  <div class="modal-step">
+                    <span class="modal-step__number">1</span>
+                    <div>
+                      <h5>Выбор банка-партнёра</h5>
+                      <p>Мы предлагаем на выбор несколько банков с лучшими условиями ипотечного кредитования</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">2</span>
+                    <div>
+                      <h5>Одобрение заявки</h5>
+                      <p>Помогаем собрать необходимые документы и получить предварительное одобрение ипотеки</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">3</span>
+                    <div>
+                      <h5>Заключение кредитного договора</h5>
+                      <p>Фиксируем процентную ставку, срок кредита и ежемесячный платёж</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">4</span>
+                    <div>
+                      <h5>Строительство под контролем банка</h5>
+                      <p>Средства перечисляются поэтапно, а каждый этап работ контролируется банком</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Кнопка в теле -->
+                <div class="modal-body__btn-wrap">
+                  <button class="card-info__btn--tocart" id="pls2">Получить консультацию</button>
+                </div>
+
+                <!-- Футер -->
+                <div class="modal-footer">
+                  <button class="modal-footer-btn" data-close="modal2">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Карточка 3 -->
+          <div class="card">
+            <div class="card__icon">📊</div>
+            <h4 class="card__title">Поэтапная оплата</h4>
+            <h5 class="card__subtitle">Оплатить стоимость дома сразу</h5>
+            <p class="card__text">Или разбить оплату на несколько комфортных этапов</p>
+            <button class="card__btn modal-open-btn" data-modal="modal3">Подробнее</button>
+
+            <!-- ===== МОДАЛЬНОЕ ОКНО modal3 ===== -->
+            <div class="modal-overlay" id="modal3">
+              <div class="modal-window modal-window--600">
+                <!-- Заголовок -->
+                <div class="modal-header">
+                  <div class="modal-header__inner">
+                    <h3>Поэтапная оплата</h3>
+                    <button class="modal-close" data-close="modal3">&times;</button>
+                  </div>
+                  <p class="modal-header__subtitle">Сметный расчет разбивается на этапы</p>
+                </div>
+
+                <!-- Содержимое -->
+                <div class="modal-body">
+                  <div class="modal-step">
+                    <span class="modal-step__number">1</span>
+                    <div>
+                      <h5>1 этап:</h5>
+                      <p>Земляные работы, возведение фундамента — авансовый платеж 35%</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">2</span>
+                    <div>
+                      <h5>2 этап:</h5>
+                      <p>Возведение стен и перекрытий — 20%</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">3</span>
+                    <div>
+                      <h5>3 этап:</h5>
+                      <p>Монтаж кровли — 20%</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">4</span>
+                    <div>
+                      <h5>4 этап:</h5>
+                      <p>Наружная отделка — 15%</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">5</span>
+                    <div>
+                      <h5>5 этап:</h5>
+                      <p>Внутренняя отделка — 15%</p>
+                    </div>
+                  </div>
+                  <div class="modal-step">
+                    <span class="modal-step__number">6</span>
+                    <div>
+                      <h5>Индивидуальные условия оплаты</h5>
+                      <p>Чтобы сделать оплату удобной и прозрачной, мы согласовываем с вами персональный график платежей с учетом
+                        этапов строительства</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Кнопка в теле -->
+                <div class="modal-body__btn-wrap">
+                  <button class="card-info__btn--tocart" id="pls3">Получить консультацию</button>
+                </div>
+
+                <!-- Футер -->
+                <div class="modal-footer">
+                  <button class="modal-footer-btn" data-close="modal3">Закрыть</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
     <div class="dummy08"></div>
     <section class="about  mt-0" id="about">
       <div class="dummy08"></div>
@@ -1053,46 +1313,50 @@
       });
     });
 </script>
+<!-- modal -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-      const openBtn = document.getElementById('openModalBtn');
-      const overlay = document.getElementById('modalOverlay');
-      const closeBtn = document.getElementById('closeModalBtn');
-      const closeFooterBtn = document.getElementById('closeModalFooterBtn');
-
-      // Открыть окно
-      openBtn.addEventListener('click', function () {
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // блокируем скролл страницы
-      });
-
-      // Закрыть по крестику
-      closeBtn.addEventListener('click', function () {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-
-      // Закрыть по кнопке в футере
-      if (closeFooterBtn) {
-        closeFooterBtn.addEventListener('click', function () {
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
+      // Открытие по кнопке с классом .modal-open-btn
+      document.querySelectorAll('.modal-open-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const modalId = this.dataset.modal;
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
         });
-      }
-
-      // Закрыть по клику на затемнение (оверлей)
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) {
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
-        }
       });
 
-      // Закрыть по клавише ESC
+      // Закрытие по кнопкам с data-close
+      document.querySelectorAll('[data-close]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const modalId = this.dataset.close;
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+
+      // Закрытие по клику на оверлей
+      document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+        overlay.addEventListener('click', function (e) {
+          if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+
+      // Закрытие по ESC
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && overlay.classList.contains('active')) {
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay.active').forEach(function (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         }
       });
     });
