@@ -500,7 +500,7 @@ p {
 }
 
 .dummy08 {
-  min-height: 80px;
+  min-height: 50px;
 }
 
 .center {
@@ -598,7 +598,7 @@ p {
 }
 
 .dropbtn:hover {
-  color: crimson;
+  color: var(--crime-orange);
 }
 
 
@@ -1975,7 +1975,7 @@ p {
   width: 100%;
   height: 40px;
   padding: 0 15px;
-  border: 2px solid var(--gray-700);
+  border: 2px solid var(--gray-300);
   border-radius: 4px;
   background: transparent;
   color: black;
