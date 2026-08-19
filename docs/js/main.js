@@ -1,4 +1,20 @@
+// $(function () {
 
+//   $(".menu__list-item a").on("click", function (event) {
+//     //отменяем стандартную обработку нажатия по ссылке
+//     event.preventDefault();
+
+//     //забираем идентификатор бока с атрибута href
+//     var id = $(this).attr('href'),
+
+//       //узнаем высоту от начала страницы до блока на который ссылается якорь
+//       top = $(id).offset().top;
+
+//     //анимируем переход на расстояние - top за 1500 мс
+//     $('body,html').animate({
+//       scrollTop: top
+//     }, 1500);
+//   });
 
 // ==================== ВКЛАДКИ (TABS) ====================
 window.openCity = function (evt, cityName) {
@@ -35,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ==================== ПЛАВНАЯ ПРОКРУТКА ====================
-  document.querySelectorAll('.menu a, .totop').forEach(function (link) {
+  document.querySelectorAll('.menu__list-item a, .totop').forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       var id = this.getAttribute('href');
@@ -47,24 +63,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ==================== Slick SLIDER ====================
-  var slickSlider = document.querySelector('.slider-blog__inner');
-  if (slickSlider && typeof $ !== 'undefined' && $.fn.slick) {
-    $(slickSlider).slick({
-      arrows: false,
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      fade: true,
-      adaptiveHeight: false,
-      responsive: [{
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          adaptiveHeight: false
-        }
-      }]
-    });
-  }
+  // var slickSlider = document.querySelector('.slider-blog__inner');
+  // if (slickSlider && typeof $ !== 'undefined' && $.fn.slick) {
+  //   $(slickSlider).slick({
+  //     arrows: false,
+  //     dots: true,
+  //     autoplay: true,
+  //     autoplaySpeed: 3000,
+  //     fade: true,
+  //     adaptiveHeight: false,
+  //     responsive: [{
+  //       breakpoint: 768,
+  //       settings: {
+  //         arrows: false,
+  //         adaptiveHeight: false
+  //       }
+  //     }]
+  //   });
+  // }
 
   // ==================== МОБИЛЬНОЕ МЕНЮ ====================
   var menuBtn = document.querySelector('.menu__btn');
